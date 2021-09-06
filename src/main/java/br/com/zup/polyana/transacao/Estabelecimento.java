@@ -6,12 +6,12 @@ public class Estabelecimento {
     private String cidade;
     private String endereco;
 
-    @Override
-    public String toString() {
-        return "Estabelecimento{" +
-                "nome='" + nome + '\'' +
-                ", cidade='" + cidade + '\'' +
-                ", endereco='" + endereco + '\'' +
-                '}';
+    @Deprecated
+    public Estabelecimento() {
+
+    }
+
+    public String getNome() {
+        return nome;
     }
 }

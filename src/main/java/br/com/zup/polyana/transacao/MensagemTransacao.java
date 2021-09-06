@@ -18,16 +18,8 @@ public class MensagemTransacao {
     private LocalDateTime efetivadaEm;
 
     @Deprecated
-    public MensagemTransacao(){
+    public MensagemTransacao() {
 
-    }
-
-    public MensagemTransacao(String id, BigDecimal valor, Estabelecimento estabelecimento, Cartao cartao, LocalDateTime efetivadaEm) {
-        this.id = id;
-        this.valor = valor;
-        this.estabelecimento = estabelecimento;
-        this.cartao = cartao;
-        this.efetivadaEm = efetivadaEm;
     }
 
     public String getId() {
@@ -48,16 +40,5 @@ public class MensagemTransacao {
 
     public LocalDateTime getEfetivadaEm() {
         return efetivadaEm;
-    }
-
-    @Override
-    public String toString() {
-        return "MensagemTransacao{" +
-                "id='" + id + '\'' +
-                ", valor=" + valor +
-                ", estabelecimento=" + estabelecimento +
-                ", cartao=" + cartao +
-                ", efetivadaEm=" + efetivadaEm +
-                '}';
     }
 }

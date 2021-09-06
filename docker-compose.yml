@@ -1,15 +1,15 @@
 version: '3'
 services:
-  db:
+  mysql-db:
     image: mysql
     container_name: mysql
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: transacao
+      MYSQL_DATABASE: transacoes
     ports:
       - 3307:3306
     volumes:
-      - mysql-transacao:/var/lib/mysql
+      - mysql-transacoes:/var/lib/mysql
 
   zookeeper:
     image: "confluentinc/cp-zookeeper:5.2.1"
@@ -106,4 +106,4 @@ services:
 
 volumes:
   postgres-volume:
-  mysql-transacao:
+  mysql-transacoes:

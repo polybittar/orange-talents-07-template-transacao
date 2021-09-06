@@ -34,8 +34,8 @@ public class KafkaConfiguration {
         return properties;
     }
 
-    @Bean
     //definição desserializador da chave e do valor
+    @Bean
     public ConsumerFactory<String, MensagemTransacao> transactionConsumerFactory() {
         StringDeserializer stringDeserializer = new StringDeserializer();
         JsonDeserializer<MensagemTransacao> jsonDeserializer = new JsonDeserializer<>(MensagemTransacao.class, false);
@@ -43,8 +43,8 @@ public class KafkaConfiguration {
         return new DefaultKafkaConsumerFactory<>(consumerConfigurations(), stringDeserializer, jsonDeserializer);
     }
 
-    @Bean
     //definindo o consumer no listener
+    @Bean
     public ConcurrentKafkaListenerContainerFactory<String, MensagemTransacao> kafkaListenerContainerFactory() {
         ConcurrentKafkaListenerContainerFactory<String, MensagemTransacao> factory = new ConcurrentKafkaListenerContainerFactory<>();
         factory.setConsumerFactory(transactionConsumerFactory());

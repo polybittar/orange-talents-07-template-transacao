@@ -1,22 +1,20 @@
 package br.com.zup.polyana.transacao;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
 
 @Component
 public class ListenerDeTransacao {
 
-    private final Logger logger = LoggerFactory.getLogger(ListenerDeTransacao.class);
-
-    //topico que vai coletar os eventos
     @KafkaListener(topics = "${spring.kafka.topic.transactions}")
     public void ouvir(MensagemTransacao mensagemTransacao) {
-        logger.info("------------ " + mensagemTransacao.toString() + " ----------------");
-
+        System.out.println("ID da Transacao: "+mensagemTransacao.getId());
+        System.out.println("Valor da Transacao: "+mensagemTransacao.getValor());
+        System.out.println("Estabelecimento: "+mensagemTransacao.getEstabelecimento().getNome());
+        System.out.println("Email: "+mensagemTransacao.getCartao().getEmail());
+        System.out.println("Data: "+mensagemTransacao.getEfetivadaEm());
     }
 
-
-
 }
+
+
