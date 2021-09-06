@@ -1,5 +1,6 @@
-package br.com.zup.polyana.transacao;
+package br.com.zup.polyana.transacao.kafka;
 
+import br.com.zup.polyana.transacao.Transacao;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.springframework.boot.autoconfigure.kafka.KafkaProperties;
@@ -36,17 +37,17 @@ public class KafkaConfiguration {
 
     //definição desserializador da chave e do valor
     @Bean
-    public ConsumerFactory<String, MensagemTransacao> transactionConsumerFactory() {
+    public ConsumerFactory<String, Transacao> transactionConsumerFactory() {
         StringDeserializer stringDeserializer = new StringDeserializer();
-        JsonDeserializer<MensagemTransacao> jsonDeserializer = new JsonDeserializer<>(MensagemTransacao.class, false);
+        JsonDeserializer<Transacao> jsonDeserializer = new JsonDeserializer<>(Transacao.class, false);
 
         return new DefaultKafkaConsumerFactory<>(consumerConfigurations(), stringDeserializer, jsonDeserializer);
     }
 
     //definindo o consumer no listener
     @Bean
-    public ConcurrentKafkaListenerContainerFactory<String, MensagemTransacao> kafkaListenerContainerFactory() {
-        ConcurrentKafkaListenerContainerFactory<String, MensagemTransacao> factory = new ConcurrentKafkaListenerContainerFactory<>();
+    public ConcurrentKafkaListenerContainerFactory<String, Transacao> kafkaListenerContainerFactory() {
+        ConcurrentKafkaListenerContainerFactory<String, Transacao> factory = new ConcurrentKafkaListenerContainerFactory<>();
         factory.setConsumerFactory(transactionConsumerFactory());
 
         return factory;
